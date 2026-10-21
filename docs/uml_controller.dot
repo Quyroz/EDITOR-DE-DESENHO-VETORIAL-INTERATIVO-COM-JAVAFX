@@ -1,0 +1,31 @@
+digraph Controller {
+  graph [label="CONTROLLERS, ESTADOS E VIEWS  •  MVC / State / Command / Memento", labelloc=t, fontname="DejaVu Sans", fontsize=21, bgcolor="white", pad=.4, nodesep=.45, ranksep=.75];
+  node [shape=record, fontname="DejaVu Sans", fontsize=12, color="#64748b", fillcolor="#f8fafc", style="filled,rounded", margin=".18,.12"];
+  edge [color="#64748b", arrowsize=.7];
+  Ferramenta [fillcolor="#e0e7ff",color="#6366f1",label="{«interface» Ferramenta|+ nome(): String\l+ aoPressionarMouse(ctx,event)\l+ aoArrastarMouse(ctx,event)\l+ aoSoltarMouse(ctx,event)\l+ aoClicar(ctx,event)\l+ aoDesativar(ctx)\l}"];
+  FerramentaSelecionar [label="FerramentaSelecionar"];
+  FerramentaTransformar [label="FerramentaTransformar"];
+  FerramentaEditarVertice [label="FerramentaEditarVertice"];
+  FerramentaInserirForma [label="FerramentaInserirForma"];
+  FerramentaDesenhar [label="FerramentaDesenhar"];
+  EditorContext [fillcolor="#dbeafe",label="{EditorContext|- documento: DocumentoDesenho\l- ferramenta: Ferramenta\l- selecionados: Set\l- historico: HistoricoController\l|+ trocarFerramenta(f)\l+ executar(comando)\l+ selecionar(forma,aditivo)\l+ desfazer() / refazer()\l+ duplicarSelecionadas()\l+ agruparSelecionadas()\l}"];
+  HistoricoController [label="{HistoricoController|- desfazer: Deque\l- refazer: Deque\l|+ executar(comando,documento)\l+ registrarEstado(snapshot)\l+ desfazer(doc): Documento\l+ refazer(doc): Documento\l}"];
+  EditorMemento [label="{EditorMemento|- estado: DocumentoDesenho\l|+ restaurar(): Documento\l}"];
+  Comando [fillcolor="#e0e7ff",label="{«interface» Comando|+ executar(documento)\l}"];
+  ContainerApp [fillcolor="#dcfce7",label="{ContainerApp|+ start(Stage)\l- abrir()/salvar()/novo()\l- configurarMouse()\l- atualizarTela()\l}"];
+  BarraLateralView [fillcolor="#dcfce7",label="{BarraLateralView|+ atualizar()\l- aplicarEstilo()\l- adicionarCamada()\l- dialogoEscala()\l}"];
+  CanvasRenderer [fillcolor="#dcfce7",label="{CanvasRenderer|+ renderizar(Canvas,EditorContext)\l}"];
+  FerramentaSelecionar -> Ferramenta [arrowhead=empty,style=dashed];
+  FerramentaTransformar -> Ferramenta [arrowhead=empty,style=dashed];
+  FerramentaEditarVertice -> Ferramenta [arrowhead=empty,style=dashed];
+  FerramentaInserirForma -> Ferramenta [arrowhead=empty,style=dashed];
+  FerramentaDesenhar -> Ferramenta [arrowhead=empty,style=dashed];
+  EditorContext -> Ferramenta [label="State",arrowhead=vee];
+  EditorContext -> HistoricoController [label="histórico",arrowhead=vee];
+  EditorContext -> Comando [label="executa",style=dashed];
+  HistoricoController -> EditorMemento [label="2 pilhas",arrowhead=diamond];
+  ContainerApp -> EditorContext [arrowhead=vee];
+  ContainerApp -> CanvasRenderer [arrowhead=vee];
+  ContainerApp -> BarraLateralView [arrowhead=vee];
+  BarraLateralView -> EditorContext [arrowhead=vee];
+}

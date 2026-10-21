@@ -1,0 +1,175 @@
+{
+  "versao": 1,
+  "largura": 1400.0,
+  "altura": 900.0,
+  "passoGrade": 20,
+  "snapAtivo": true,
+  "mostrarGrade": true,
+  "camadas": [
+    {
+      "id": "camada-principal",
+      "nome": "Formas principais",
+      "visivel": true,
+      "bloqueada": false
+    },
+    {
+      "id": "camada-detalhes",
+      "nome": "Detalhes",
+      "visivel": true,
+      "bloqueada": false
+    }
+  ],
+  "formas": [
+    {
+      "groupId": null,
+      "preenchimento": "#DDD6FE",
+      "borda": "#334155",
+      "espessura": 2.0,
+      "centro": null,
+      "eixoU": null,
+      "eixoV": null,
+      "tipo": "poligono",
+      "id": "poligono-1",
+      "layerId": "camada-principal",
+      "pontos": [
+        {
+          "x": 160,
+          "y": 170
+        },
+        {
+          "x": 285,
+          "y": 115
+        },
+        {
+          "x": 345,
+          "y": 275
+        },
+        {
+          "x": 205,
+          "y": 315
+        }
+      ]
+    },
+    {
+      "groupId": "grupo-1",
+      "preenchimento": "#BFDBFE",
+      "borda": "#334155",
+      "espessura": 2.0,
+      "centro": null,
+      "eixoU": null,
+      "eixoV": null,
+      "tipo": "quadrado",
+      "id": "quadrado-1",
+      "layerId": "camada-principal",
+      "pontos": [
+        {
+          "x": 430,
+          "y": 130
+        },
+        {
+          "x": 590,
+          "y": 130
+        },
+        {
+          "x": 590,
+          "y": 290
+        },
+        {
+          "x": 430,
+          "y": 290
+        }
+      ]
+    },
+    {
+      "groupId": null,
+      "preenchimento": "#A7F3D0",
+      "borda": "#334155",
+      "espessura": 2.0,
+      "centro": {
+        "x": 680,
+        "y": 460
+      },
+      "eixoU": {
+        "x": 85,
+        "y": 0
+      },
+      "eixoV": {
+        "x": 0,
+        "y": 85
+      },
+      "tipo": "circulo",
+      "id": "circulo-1",
+      "layerId": "camada-principal",
+      "pontos": [
+        {
+          "x": 680,
+          "y": 460
+        }
+      ]
+    },
+    {
+      "groupId": "grupo-1",
+      "preenchimento": "#FDE68A",
+      "borda": "#334155",
+      "espessura": 2.0,
+      "centro": null,
+      "eixoU": null,
+      "eixoV": null,
+      "tipo": "hexagono",
+      "id": "hexagono-1",
+      "layerId": "camada-detalhes",
+      "pontos": [
+        {
+          "x": 865.0,
+          "y": 270.0
+        },
+        {
+          "x": 822.5,
+          "y": 343.61215932167727
+        },
+        {
+          "x": 737.5,
+          "y": 343.61215932167727
+        },
+        {
+          "x": 695.0,
+          "y": 270.0
+        },
+        {
+          "x": 737.5,
+          "y": 196.38784067832273
+        },
+        {
+          "x": 822.5,
+          "y": 196.38784067832273
+        }
+      ]
+    },
+    {
+      "groupId": null,
+      "preenchimento": "#FBCFE8",
+      "borda": "#334155",
+      "espessura": 2.0,
+      "centro": null,
+      "eixoU": null,
+      "eixoV": null,
+      "tipo": "poligono",
+      "id": "triangulo-1",
+      "layerId": "camada-detalhes",
+      "pontos": [
+        {
+          "x": 270,
+          "y": 490
+        },
+        {
+          "x": 370,
+          "y": 590
+        },
+        {
+          "x": 175,
+          "y": 610
+        }
+      ]
+    }
+  ]
+}

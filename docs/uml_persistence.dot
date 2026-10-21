@@ -1,0 +1,17 @@
+digraph Persistencia {
+  graph [label="PERSISTÊNCIA JSON E FLUXO DE EDIÇÃO",labelloc=t,fontname="DejaVu Sans",fontsize=21,bgcolor=white,pad=.4,nodesep=.55,ranksep=.75];
+  node [shape=record, fontname="DejaVu Sans", fontsize=12,color="#64748b",fillcolor="#f8fafc",style="filled,rounded",margin=".18,.14"];
+  edge [color="#64748b",arrowsize=.7];
+  ContainerApp [fillcolor="#dcfce7",label="{ContainerApp (View)|+ abrir()\l+ salvar()\l+ confirmarPerdaDeAlteracoes()\l}"];
+  ArquivoProjeto [fillcolor="#fef3c7",label="{ArquivoProjeto (Persistence)|- json: ObjectMapper\l|+ salvar(path,documento): void\l+ carregar(path): DocumentoDesenho\l- converter(forma): FormaJson\l- converter(json): FormaGeometrica\l}"];
+  DocumentoJson [label="{«record» DocumentoJson|versao; largura; altura\lpassoGrade; snapAtivo; mostrarGrade\lcamadas[]; formas[]\l}"];
+  FormaJson [label="{«record» FormaJson|tipo; id; layerId; groupId\lpreenchimento; borda; espessura\lpontos[]; centro; eixoU; eixoV\l}"];
+  CamadaJson [label="{«record» CamadaJson|id; nome; visivel; bloqueada\l}"];
+  PontoJson [label="{«record» PontoJson|x; y\l}"];
+  Json [shape=folder,fillcolor="#dbeafe",label="projeto.json\n(versionado)"];
+  ContainerApp -> ArquivoProjeto [label="chama"]; ArquivoProjeto -> DocumentoJson [label="mapeia",arrowhead=vee];
+  DocumentoJson -> FormaJson [arrowhead=diamond,label="0..*"];
+  DocumentoJson -> CamadaJson [arrowhead=diamond,label="1..*"];
+  FormaJson -> PontoJson [arrowhead=diamond,label="0..*"];
+  ArquivoProjeto -> Json [label="salva atom. / carrega",dir=both,arrowhead=vee,arrowtail=vee];
+}

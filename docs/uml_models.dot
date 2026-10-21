@@ -1,0 +1,25 @@
+digraph Models {
+  graph [label="MODELOS GEOMÉTRICOS  •  MVC / Prototype / Composite", labelloc=t, fontname="DejaVu Sans", fontsize=22, bgcolor="white", pad=0.4, nodesep=.35, ranksep=.55];
+  node [shape=record, fontname="DejaVu Sans", fontsize=12, color="#64748b", fillcolor="#f8fafc", style="filled,rounded", margin=".18,.12"];
+  edge [color="#64748b", arrowsize=.7];
+  FormaGeometrica [fillcolor="#e0e7ff", color="#6366f1", label="{«interface» FormaGeometrica|+ adicionarPonto(Ponto)\l+ getPontos(): List\l+ calcularArea(): double\l+ calcularPerimetro(): double\l+ getCentroide(): Ponto\l+ contemPonto(x,y): boolean\l+ transladar(dx,dy)\l+ escalar(fator)\l+ rotacionar(radianos)\l+ cisalhar(shx,shy)\l+ clonar(): FormaGeometrica\l}"];
+  FormaBase [label="{«abstract» FormaBase|- id: String\l- preenchimento: String\l- borda: String\l- espessura: double\l- groupId: String\l- layerId: String\l|+ getters / setters\l# copiarAtributosPara(...)\l}"];
+  Poligono [label="{Poligono|- pontos: List\l|+ alterarPonto(i,p)\l+ calcularArea()\l+ calcularPerimetro()\l+ getCentroide()\l+ contemPonto(x,y)\l+ clonar()\l}"];
+  Quadrado [label="{Quadrado|+ Quadrado(origem,lado)\l+ clonar()\l}"];
+  Hexagono [label="{Hexagono|+ Hexagono(centro,raio)\l+ clonar()\l}"];
+  Circulo [label="{Circulo|- centro: Ponto\l- eixoU: Ponto\l- eixoV: Ponto\l|+ pontoContorno(angulo)\l+ calcularArea()\l+ calcularPerimetro()\l+ contemPonto(x,y)\l+ clonar()\l}"];
+  Ponto [label="{Ponto|- x: double\l- y: double\l|+ distancia(p): double\l+ somar(dx,dy): Ponto\l}"];
+  Camada [label="{Camada|- id: String\l- nome: String\l- visivel: boolean\l- bloqueada: boolean\l|+ clonar(): Camada\l}"];
+  DocumentoDesenho [fillcolor="#dbeafe",label="{DocumentoDesenho|- formas: List\l- camadas: List\l- largura / altura\l- grade / snap\l|+ adicionarForma(f)\l+ adicionarCamada(c)\l+ formasOrdenadas()\l+ clonar()\l}"];
+  Transformacoes [label="{«utility» Transformacoes|+ centroConjunto(formas)\l+ transladar(formas,dx,dy)\l+ escalar(formas,fator)\l+ rotacionar(formas,angulo)\l+ cisalhar(formas,shx,shy)\l}"];
+  FormaBase -> FormaGeometrica [style=dashed,arrowhead=empty];
+  Poligono -> FormaBase [arrowhead=empty];
+  Circulo -> FormaBase [arrowhead=empty];
+  Quadrado -> Poligono [arrowhead=empty];
+  Hexagono -> Poligono [arrowhead=empty];
+  DocumentoDesenho -> FormaGeometrica [arrowhead=diamond,label="0..*",fontsize=10];
+  DocumentoDesenho -> Camada [arrowhead=diamond,label="1..*",fontsize=10];
+  Poligono -> Ponto [arrowhead=diamond,label="3..*",fontsize=10];
+  Circulo -> Ponto [arrowhead=diamond,label="3",fontsize=10];
+  Transformacoes -> FormaGeometrica [style=dashed,arrowhead=vee];
+}
